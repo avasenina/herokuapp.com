@@ -6,12 +6,12 @@ import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class herroDropDown {
+public class herokuDropDown {
 
     public static final String  URL ="http://the-internet.herokuapp.com/inputs";
 
     @Test
-    public void checkInput(){
+    public void checkInput() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
         driver.get(URL);
@@ -20,21 +20,12 @@ public class herroDropDown {
         Select select = new Select(driver.findElement(By.id("dropdown")));
         select.selectByValue("Option 1");
         String text = select.getFirstSelectedOption().getText();
-        assertEquals(text,"Option 1");
+        assertEquals(text, "Option 1");
 
 
         select.selectByValue("Option 1");
-        String text = select.getFirstSelectedOption().getText();
-        assertEquals(text,"Option 2");
-
-//        WebElement Option = driver.findElement(By.id("dropdown"));
-//        Select Opt1 = new Select();
-//        Opt1.selectByValue("Option 1");
-//        String text ("Option 1");
-//        assertEquals(text,"");
-
-
-
-
+        String text1 = select.getFirstSelectedOption().getText();
+        assertEquals(text1, "Option 2");
+    }
 
 }
