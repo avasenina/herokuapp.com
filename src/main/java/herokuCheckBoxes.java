@@ -24,5 +24,7 @@ public class herokuCheckBoxes {
         assertEquals(check2, "cheked");
         check2.click();
         assertEquals(check2, "$0");
+        driver.quit();
+
     }
 }

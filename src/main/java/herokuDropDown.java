@@ -26,6 +26,7 @@ public class herokuDropDown {
         select.selectByValue("Option 1");
         String text1 = select.getFirstSelectedOption().getText();
         assertEquals(text1, "Option 2");
-    }
 
+        driver.quit();
+    }
 }

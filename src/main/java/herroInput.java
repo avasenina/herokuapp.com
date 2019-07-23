@@ -40,6 +40,8 @@ public class herroInput {
             Input.sendKeys(Keys.ARROW_DOWN);
             text  = Input.getAttribute("value");
             assertEquals(text, "1234");
+
+            driver.quit();
         }
 
 

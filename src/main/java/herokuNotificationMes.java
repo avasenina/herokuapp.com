@@ -22,5 +22,6 @@ public class herokuNotificationMes {
         WebElement textNotification = driver.findElement(By.id("flash"));
         assertEquals(textNotification, "Action unsuccesful, please try again");
 
+        driver.quit();
     }
 }
