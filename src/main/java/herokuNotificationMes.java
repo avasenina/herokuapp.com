@@ -1,12 +1,14 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class herokuCheckBoxes {
-    public static final String  URL ="http://http://the-internet.herokuapp.com/checkboxes";
+
+public class herokuNotificationMes {
+    public static final String  URL ="http://the-internet.herokuapp.com/notification_message_rendered";
 
     @Test
     public void addRemovalElement() {
@@ -15,14 +17,10 @@ public class herokuCheckBoxes {
 
         driver.get(URL);
         driver.manage().window().fullscreen();
-        WebElement check1 = driver.findElement(By.name("checkbox 1"));
-        assertEquals(check1, "$0");
-        check1.click();
-        assertEquals(check1, "cheked");
+        WebElement linkText = driver.findElementByLinkText("Click here");
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        WebElement textNotification = driver.findElement(By.id("flash"));
+        assertEquals(textNotification, "Action unsuccesful, please try again");
 
-        WebElement check2 = driver.findElement(By.name("checkbox 2"));
-        assertEquals(check2, "cheked");
-        check2.click();
-        assertEquals(check2, "$0");
     }
 }
