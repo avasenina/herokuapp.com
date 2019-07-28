@@ -14,7 +14,6 @@ public class herokuTypos {
         driver.get(URL);
         driver.manage().window().fullscreen();
         WebElement findElements = driver.findElement(By.xpath("//*[text()='you won't']"));
-
         driver.quit();
     }
 }
