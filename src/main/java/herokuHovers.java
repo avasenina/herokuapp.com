@@ -18,16 +18,53 @@ public class herokuHovers {
         ChromeDriver driver = new ChromeDriver();
 
         driver.get(URL);
+        driver.manage().window().maximize();
         Actions action = new Actions(driver);
-        List<WebElement> us1 = driver.findElements(By.xpath("//*[text()='img/avatar-blank.jpg']"));
-        assertEquals(us1.size(), 1);
-        action.moveToElement((WebElement) us1).build().perform();
-        WebElement name = driver.findElementByName("user1");
-        assertEquals(name.getText(),"name: user1");
-        WebElement link1 = driver.findElementByLinkText("View profile");
-        action.click(link1);
-        driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.SECONDS);
-        WebElement body1 = driver.findElement(By.ByXPath("//*[text()='404']");
+
+        WebElement us1 = driver.findElement(By.xpath("//html/body/div[2]/div/div/div[1]/img"));
+        WebElement link1 = driver.findElement(By.xpath("//*[@href='/users/1']"));
+        WebElement name1 = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/h5"));
+        action.moveToElement(us1).perform();
+        String profile = name1.getText();
+        assertEquals(profile, "name: user1");
+        action.moveToElement(us1).moveToElement(link1).click().build().perform();
+        driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.SECONDS);
+        String text = driver.findElement(By.tagName("h1")).getText();
+        assertEquals(text, "Not Found");
+
+
+        driver.get(URL);
+        driver.manage().window().maximize();
+        Actions action = new Actions(driver);
+
+        WebElement us2 = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/img"));
+        WebElement link2 = driver.findElement(By.xpath("//*[@href='/users/2']"));
+        WebElement name2 = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/h5"));
+        action.moveToElement(us2).perform();
+        String profile = name2.getText();
+        assertEquals(profile, "name: user2");
+        action.moveToElement(us2).moveToElement(link2).click().build().perform();
+        driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.SECONDS);
+        String text = driver.findElement(By.tagName("h1")).getText();
+        assertEquals(text, "Not Found");
+
+
+
+        driver.get(URL);
+        driver.manage().window().maximize();
+        Actions action = new Actions(driver);
+
+        WebElement us3 = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[3]/img"));
+        WebElement link3 = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[3]/div/a"));
+        WebElement name = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/h5"));
+        action.moveToElement(us3).perform();
+        String profile = name.getText();
+        assertEquals(profile, "name: user1");
+        action.moveToElement(us3).moveToElement(link3).click().build().perform();
+        driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.SECONDS);
+        String text = driver.findElement(By.tagName("h1")).getText();
+        assertEquals(text, "Not Found");
+
     }
 
 }
